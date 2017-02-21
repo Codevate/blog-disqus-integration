@@ -33,6 +33,7 @@ class DisqusExtension extends \Twig_Extension
   {
     return array(
       new \Twig_SimpleFunction('disqus_embed', array($this, 'renderEmbed'), array('is_safe' => array('html'))),
+      new \Twig_SimpleFunction('disqus_count', array($this, 'renderCount'), array('is_safe' => array('html'))),
     );
   }
 
@@ -49,6 +50,16 @@ class DisqusExtension extends \Twig_Extension
       'identifier' => sprintf('post_%d', $post->getId()),
       'title' => $post->getTitle(),
       'url' => $this->router->generate('blog_post_redirect', array('id' => $post->getId()), UrlGeneratorInterface::ABSOLUTE_URL),
+    ));
+  }
+
+  /**
+   * @return string
+   */
+  public function renderCount()
+  {
+    return $this->twig->render(':disqus:_count.html.twig', array(
+      'shortname' => $this->config['shortname'],
     ));
   }
 
