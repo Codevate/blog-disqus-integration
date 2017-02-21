@@ -20,4 +20,7 @@
 
 {% block content %}
   {{ post.content|raw }}
+  <hr>
+  {{ disqus_embed(post) }}
+  <hr>
 {% endblock %}

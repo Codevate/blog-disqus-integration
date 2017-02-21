@@ -4,6 +4,9 @@ parameters:
 #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    app.twig.disqus_extension:
+        class: AppBundle\Twig\DisqusExtension
+        public: false
+        arguments: ["@twig", "@router.default", "%disqus%"]
+        tags:
+            - { name: twig.extension }
