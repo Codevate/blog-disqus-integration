@@ -7,6 +7,6 @@ services:
     app.twig.disqus_extension:
         class: AppBundle\Twig\DisqusExtension
         public: false
-        arguments: ["@twig", "@router.default", "%disqus%"]
+        arguments: ["@twig", "@router.default", "@security.token_storage", "%disqus%"]
         tags:
             - { name: twig.extension }

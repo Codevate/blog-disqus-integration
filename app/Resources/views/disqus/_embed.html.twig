@@ -1,6 +1,15 @@
 <div id="disqus_thread"></div>
 <script type="text/javascript">
   var disqus_config = function () {
+    this.page.remote_auth_s3 = '{{ hmac_signature }}';
+    this.page.api_key = '{{ api_key }}';
+    this.sso = {
+      name: 'Codevate Blog Example',
+      url: '{{ url('fos_user_security_login') }}',
+      logout: '{{ url('fos_user_security_logout') }}',
+      width: '800',
+      height: '600'
+    };
     this.page.identifier = '{{ identifier }}';
     this.page.title = '{{ title }}';
     this.page.url = '{{ url }}';
