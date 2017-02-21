@@ -2,6 +2,8 @@
 
 A companion project for our blog post on integrating the [Disqus](https://disqus.com/) comment system.
 
+![Example Screenshot](/web/img/post-sample-image.jpg?raw=true "Example Screenshot")
+
 ## Getting started
 
 Install dependencies:
