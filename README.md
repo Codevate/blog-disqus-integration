@@ -28,6 +28,11 @@ php app/console server:run
 
 You can now log in with the username and password `test` at http://127.0.0.1:8000/login
 
+## Troubleshooting
+
+* Make sure you've entered values for all of the disqus parameters in `parameters.yml`
+* Check that SSO is enabled for your account (use this [contact form](https://disqus.com/support/?article=Integrating%20Single%20Sign-On))
+
 ## Credits
 
 - [Clean Blog template](https://startbootstrap.com/template-overviews/clean-blog/) provided by [David Miller](http://davidmiller.io/).
