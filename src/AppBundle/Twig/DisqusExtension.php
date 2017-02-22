@@ -78,26 +78,7 @@ class DisqusExtension extends \Twig_Extension
 
     $message = base64_encode(json_encode($data));
     $timestamp = time();
-    $blocksize = 64;
-    $secretKey = $this->config['api_secret'];
 
-    if (strlen($secretKey) > $blocksize) {
-      $secretKey = pack('H*', sha1($secretKey));
-    }
-
-    $secretKey = str_pad($secretKey, $blocksize, chr(0x00));
-    $ipad = str_repeat(chr(0x36), $blocksize);
-    $opad = str_repeat(chr(0x5c), $blocksize);
-    $hmac = pack(
-      'H*', sha1(
-        ($secretKey ^ $opad) . pack(
-          'H*', sha1(
-            ($secretKey ^ $ipad) . sprintf('%s %s', $message, $timestamp)
-          )
-        )
-      )
-    );
-
-    return sprintf('%s %s %s', $message, bin2hex($hmac), $timestamp);
+    return sprintf('%s %s %s', $message, hash_hmac('sha1', sprintf('%s %s', $message, $timestamp), $this->config['api_secret']), $timestamp);
   }
 }
